@@ -5,10 +5,12 @@
 .App {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
+  --accent-blue: rgb(110, 182, 221);
+  --accent-red: rgb(245, 99, 99);
+  --inner-frame-color: #242424;
 }
 
 .App[theme-attr=light] {
@@ -21,7 +23,6 @@
   inset -5px -5px 20px rgba(204, 204, 204, 0.2);
   --frame-shadow: -10px -10px 10px rgba(255, 255, 255, 0.2),
   10px 10px 10px rgba(0, 0, 0, 0.2);
-  --inner-frame-color: #242424;
   
   /* custom keycap color */
   --key-color: linear-gradient(90deg,#ccc, white);
@@ -50,7 +51,6 @@
   inset -5px -5px 20px rgba(204, 204, 204, 0.2);
   --frame-shadow: -10px -10px 10px rgba(255, 255, 255, 0.04),
   10px 10px 10px rgba(0, 0, 0, 0.5);
-  --inner-frame-color: #242424;
 
   /* custom keycap color */
   --key-color: linear-gradient(90deg, #42516a, #5f6579);
@@ -70,11 +70,8 @@
 }
 
 header {
-  position: fixed;
-  top: 0;
   display: flex;
   justify-content: space-around;
   width: 100%;
-  padding: 0;
-  margin: 0;
+  border-bottom: dashed 1px gray;
 }

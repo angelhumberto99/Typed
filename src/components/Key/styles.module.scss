@@ -10,6 +10,11 @@
   border-top: 0px solid transparent;
   color: var(--key-font-color);
   font-weight: 500;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   transition: all ease .3s;
 }
 

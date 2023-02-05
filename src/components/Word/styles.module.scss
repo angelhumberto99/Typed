@@ -1,0 +1,57 @@
+.word {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.8rem;
+  border-radius: 3px;
+  position: relative;
+}
+
+.particle {
+  position: absolute;
+  display: flex;
+  height: 100%;
+  transform: translate(50%,-50%);
+  top: 12px;
+  right: 50%;
+}
+
+.pass-word {
+  animation: success-particles .3s ease-in-out;
+  color: var(--accent-blue);
+}
+
+.wrong-word {
+  color: var(--accent-red);
+  animation: error-particles .3s ease-in-out;
+}
+
+@keyframes success-particles {
+  from {
+    width: 0;
+    background-color: var(--accent-blue);
+  } to {
+    width: 100%;
+    background-color: transparent;
+  }
+}
+
+@keyframes error-particles {
+  from {
+    width: 0;
+    background-color: var(--accent-red);
+  } to {
+    width: 100%;
+    background-color: transparent;
+  }
+}
+
+.success {
+  color: var(--accent-blue);
+}
+
+.wrong {
+  color: var(--accent-red);
+}

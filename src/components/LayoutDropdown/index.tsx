@@ -1,15 +1,18 @@
-import { ILayout } from './types'
-import { IProps } from './types'
-import Layouts from './layouts.json'
+import { ArrayLayout, ILayout } from '../../types'
+import Layouts from '../../layouts.json'
 
-const layouts: ILayout = Layouts as ILayout
+const layouts: ArrayLayout = Layouts as ArrayLayout
 
-const LayoutDropdown = ({setLayout}: IProps) => {
+export interface IProps {
+  handler: (index:number) => void
+}
+
+const LayoutDropdown = ({handler}: IProps) => {
   return (
-    <select onChange={({target}) => setLayout(target.value)}>
+    <select onChange={({target}) => handler(target.selectedIndex)}>
       {
-        Object.keys(layouts).map((key: string, index: number) => {
-          return <option key={index}>{key}</option>
+        layouts.map((layout: ILayout, index: number) => {
+          return <option key={index}>{layout.lang}</option>
         })
       }
     </select>

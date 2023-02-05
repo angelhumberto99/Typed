@@ -1,7 +1,11 @@
-import { IKey } from '../Keyboard/types'
-import { IProps } from './types'
-import { getKeySize } from '@/utils'
+import { IKey } from '../../types'
+import { getKeySize } from '../../utils'
 import styles from './styles.module.scss'
+
+interface IProps {
+  children: IKey
+  active: boolean
+}
 
 const Key = ({ children, active }: IProps) => {
   const ISO: boolean = children.main.includes('isoretdown')

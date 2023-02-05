@@ -1,23 +1,29 @@
-import { getActiveKey } from '@/utils'
-import { IProps } from './types'
+import { getActiveKey } from '../../utils'
+import { ArrayLayout, IKey, IRow } from '../../types'
 import Key from '../Key'
 import styles from './styles.module.scss'
-import Layouts from '../LayoutDropdown/layouts.json'
-import { IKey, IRow, ILayout } from '../LayoutDropdown/types'
+import Layouts from '../../layouts.json'
 
-const KEYS: ILayout = Layouts as ILayout
+const KEYS: ArrayLayout = Layouts as ArrayLayout
+
+interface IProps {
+  current: string
+  lang: number
+}
 
 const Keyboard = ({ current, lang }: IProps) => {
+  const { layout } = KEYS[lang]
+  
   return (
     <div className={styles.frame}>
       <div className={styles['inset-frame']}>
         {
-          Object.keys(KEYS[lang as keyof ILayout]).map((row: string) => {
+          Object.keys(layout).map((row: string) => {
             return <ul className={styles.row} key={row}>
             {
-              KEYS[lang as keyof ILayout][row as keyof IRow].map((key:IKey, index:number) => {
+              layout[row as keyof IRow].map((key:IKey, index:number) => {
                 return <Key key={index}
-                active={getActiveKey(key, current)}
+                  active={getActiveKey(key, current)}
                 >{key}</Key>
               })
             }

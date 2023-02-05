@@ -12,11 +12,13 @@ export interface IRow {
 }
 
 export interface ILayout {
-  "Español ISO": IRow
-  "English ANSI": IRow
-  "Deutch ISO": IRow
+  lang: string
+  layout: IRow
 }
 
-export interface IProps {
-  setLayout: Function
+export type ArrayLayout = Array<ILayout>
+
+export interface IWord{
+  word: string
+  finished: boolean
 }
