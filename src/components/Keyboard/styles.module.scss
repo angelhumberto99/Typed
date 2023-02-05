@@ -1,0 +1,31 @@
+.frame {
+  width: calc(90% - 4rem);
+  min-width: 650px;
+  max-width: 1200px;
+  border: 2rem solid var(--frame-color);
+  border-radius: 15px;
+  aspect-ratio: 21/9;
+  box-shadow: var(--frame-shadow);
+  background-color: var(--inner-frame-color);
+}
+
+.inset-frame {
+  background-color: var(--inner-frame-color);
+  border-radius: 5px;
+  box-shadow: var(--frame-shadow-inset);
+  height: 100%;
+  padding: 5px;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+  gap: 5px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

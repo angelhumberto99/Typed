@@ -1,0 +1,147 @@
+.key {
+  flex: 1;
+  position: relative;
+  text-align: center;
+  background-image: var(--key-color);
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: 5px solid var(--shadow);
+  border-bottom: 15px solid var(--shadow-inverse);
+  border-top: 0px solid transparent;
+  color: var(--key-font-color);
+  font-weight: 500;
+  transition: all ease .3s;
+}
+
+@mixin fn-active {
+  background-image: var(--fn-key-color-active);
+  border: 5px solid var(--shadow);
+  border-right: 5px solid var(--shadow-inverse);
+  border-top: 0px solid transparent;
+  border-bottom: 15px solid var(--shadow);
+}
+
+.active {
+  background-image: var(--key-color-inverse);
+  box-shadow: 3px 3px 3px var(--key-active), 
+             -3px -3px 3px var(--key-active),
+             -3px 3px 3px var(--key-active),
+              3px -3px 3px var(--key-active);
+
+  &.iso::before {
+    background-image: var(--iso-enter-active);
+    border-right: 5px solid var(--shadow-inverse);
+    border-top: 0px solid transparent;
+  }
+  &.iso {
+    @include fn-active;
+    background-image: var(--iso-enter-active) !important;
+    box-shadow: 3px 3px 3px var(--key-active), 
+             -3px -5px 3px var(--key-active),
+             -3px 3px 3px var(--key-active),
+              3px -15px 1px var(--key-active);
+  }
+  &.fn {
+    @include fn-active;
+    box-shadow: 3px 3px 3px var(--key-active), 
+             -3px -3px 3px var(--key-active),
+             -3px 3px 3px var(--key-active),
+              3px -3px 3px var(--key-active);
+  }
+}
+
+.key::after {
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  bottom: -3px;
+  background-color: rgba(0, 0, 0, 0.09);
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+
+.iso::before {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  left: -5px;
+  top: -20px;
+  background-image: var(--iso-enter-color);
+  border-right: 5px solid var(--shadow);
+  border-left: 5px solid var(--shadow);
+
+}
+
+.fn {
+  background-image: var(--fn-key-color);
+}
+
+.iso {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-image: var(--iso-enter-color);
+}
+
+.normal {
+  flex: 1;
+}
+
+.lg {
+  flex: 1.5;
+}
+
+.xl {
+  flex: 6;
+}
+
+.rshift {
+  flex: 2.5;
+}
+
+.Backspace {
+  flex: 1.8;
+}
+
+.CapsLock {
+  flex: 2;
+}
+
+.alter {
+  display: none;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin: 0;
+}
+
+.layout[latch-attr=true]::after {
+  content: "-";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+  transform: translateX(-50%);
+  color:rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .09);
+}
+
+@media (width > 1200px) {
+  .layout > span {
+    font-size: 1.4rem;
+  }
+  .alter {
+    display: block;
+  }
+  .layout {
+    padding: 10px;
+  }
+  .layout[latch=true]::after {
+    font-size: 3rem;
+  }
+}

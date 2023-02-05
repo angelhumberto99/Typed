@@ -1,0 +1,80 @@
+#root {
+  max-width: 1280px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.App[theme-attr=light] {
+  background-color: #ccc;
+  --font-color: black;
+  
+  /* custom frame color */
+  --frame-color: #ccc;
+  --frame-shadow-inset: inset 5px 5px 20px #24242436,
+  inset -5px -5px 20px rgba(204, 204, 204, 0.2);
+  --frame-shadow: -10px -10px 10px rgba(255, 255, 255, 0.2),
+  10px 10px 10px rgba(0, 0, 0, 0.2);
+  --inner-frame-color: #242424;
+  
+  /* custom keycap color */
+  --key-color: linear-gradient(90deg,#ccc, white);
+  --key-color-inverse: linear-gradient(90deg, white, #ccc);
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-inverse: rgba(204, 204, 204, 0.1);
+  --key-font-color: #5f6579;
+  --key-active: white;
+  --fn-key-color: linear-gradient(90deg, #e7b6b7, #fbd8d4);
+  --fn-key-color-active: linear-gradient(90deg, #fbd8d4, #e7b6b7);
+  --iso-enter-color: linear-gradient(90deg, #edc1c0, #fbd8d4);
+  --iso-enter-active: linear-gradient(90deg, #f4ccca, #e7b6b7);
+
+  transition-property: background-color, color, background-image;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.App[theme-attr=dark] {
+  background-color: #202020;
+  --font-color: white;
+
+  /* custom frame color */
+  --frame-color: #202020;
+  --frame-shadow-inset: inset 5px 5px 20px #24242436,
+  inset -5px -5px 20px rgba(204, 204, 204, 0.2);
+  --frame-shadow: -10px -10px 10px rgba(255, 255, 255, 0.04),
+  10px 10px 10px rgba(0, 0, 0, 0.5);
+  --inner-frame-color: #242424;
+
+  /* custom keycap color */
+  --key-color: linear-gradient(90deg, #42516a, #5f6579);
+  --key-color-inverse: linear-gradient(90deg, #5f6579, #42516a);
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-inverse: rgba(204, 204, 204, 0.1);
+  --key-font-color: #ffd6d4;
+  --key-active: white;
+  --fn-key-color: linear-gradient(90deg, #e7b6b7, #fbd8d4);
+  --fn-key-color-active: linear-gradient(90deg, #fbd8d4, #e7b6b7);
+  --iso-enter-color: linear-gradient(90deg, #edc1c0, #fbd8d4);
+  --iso-enter-active: linear-gradient(90deg, #f4ccca, #e7b6b7);
+
+  transition-property: background-color, color, background-image;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}

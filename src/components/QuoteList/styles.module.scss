@@ -1,0 +1,14 @@
+.container {
+  width: calc(90% - 4rem);
+  min-width: 650px;
+  max-width: 1200px;
+  margin-bottom: 5rem;
+  height: calc(1.5rem * 5);
+  overflow: auto;
+}
+
+.quotes {
+  color: var(--font-color);
+  font-size: 2rem;
+  
+}

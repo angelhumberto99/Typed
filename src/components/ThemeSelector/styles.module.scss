@@ -1,0 +1,33 @@
+.rotator {
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4.5rem;
+  position: absolute;
+  top: -.5rem;
+  left: -3.4rem;
+  background-image: linear-gradient(rgb(54, 54, 255), orange);
+  transition: all 0.3s ease;
+}
+
+.selector {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.selector:focus {
+  outline: none;
+}
+
+.active {
+  rotate: 180deg;
+}
