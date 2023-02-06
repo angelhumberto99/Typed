@@ -1,36 +1,29 @@
-import { IWord } from '../../types'
-import { useCurrentWord, useKeyboard } from '../../hooks'
+import { useContext } from 'react'
+import { KeyboardContext } from '../../context'
+import { useCurrentWord } from '../../hooks'
 import Word from '../Word'
+import Timer from '../Timer'
 import styles from './styles.module.scss'
 
-interface Props {
-  endOfWord: boolean
-  letter: string
-  handleEnd: () => void
-}
-
-const QuoteList = ({endOfWord, letter, handleEnd}: Props) => {
-  const { typedWord, correctWord, currentIndexWord } = useKeyboard({endOfWord, letter, handleEnd})
-  const { currentWord, quotes } = useCurrentWord({currentIndexWord})
+const QuoteList = () => {
+  const { letter, word, index } = useContext(KeyboardContext)
+  const { currentWord, quotes } = useCurrentWord({index})
  
   return (
-    <>
-      <p style={{color: 'white'}}>type: {typedWord}</p>
-      <p style={{color: 'white'}}>current: {currentWord.word}</p>
-      <div className={styles.container}>
-        <p>
-          {
-            quotes.map((word:IWord, index:number) => {
-              return (
-                <Word key={index} current={currentWord.word} finished={word.finished} typed={letter}>
-                  {word.word}
-                </Word>
-              )
-            })
-          }
-        </p>
-      </div>
-    </>
+    <div className={styles.container}>
+      <p className={styles.paragraph}>
+        {
+          quotes.map((w:string, i:number) => {
+            return (
+              <Word key={i} active={index===i} current={currentWord} typed={word}>
+                {w}
+              </Word>
+            )
+          })
+        }
+      </p>
+      <Timer/>
+    </div>
   )
 }
 

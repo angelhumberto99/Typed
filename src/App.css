@@ -55,8 +55,8 @@
   /* custom keycap color */
   --key-color: linear-gradient(90deg, #42516a, #5f6579);
   --key-color-inverse: linear-gradient(90deg, #5f6579, #42516a);
-  --shadow: rgba(0, 0, 0, 0.1);
-  --shadow-inverse: rgba(204, 204, 204, 0.1);
+  --shadow-inverse: rgba(0, 0, 0, 0.1);
+  --shadow: rgba(204, 204, 204, 0.1);
   --key-font-color: #ffd6d4;
   --key-active: white;
   --fn-key-color: linear-gradient(90deg, #e7b6b7, #fbd8d4);
@@ -72,6 +72,6 @@
 header {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
-  border-bottom: dashed 1px gray;
 }

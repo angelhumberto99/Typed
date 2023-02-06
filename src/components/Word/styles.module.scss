@@ -19,12 +19,16 @@
 }
 
 .pass-word {
+  span {
+    color: var(--accent-blue) !important;
+  }
   animation: success-particles .3s ease-in-out;
-  color: var(--accent-blue);
 }
 
 .wrong-word {
-  color: var(--accent-red);
+  span {
+    color: var(--accent-red) !important;
+  }
   animation: error-particles .3s ease-in-out;
 }
 
@@ -34,7 +38,7 @@
     background-color: var(--accent-blue);
   } to {
     width: 100%;
-    background-color: transparent;
+    background-color: var(--shadow);
   }
 }
 
@@ -44,7 +48,7 @@
     background-color: var(--accent-red);
   } to {
     width: 100%;
-    background-color: transparent;
+    background-color: var(--shadow);
   }
 }
 
@@ -54,4 +58,16 @@
 
 .wrong {
   color: var(--accent-red);
+}
+
+.selected {
+  border-radius: 5px;
+  background-color: var(--shadow);
+}
+
+.overflow {
+  background-color: rgb(222, 199, 155);
+  span {
+    color: var(--accent-red);
+  }
 }

@@ -17,8 +17,3 @@ export interface ILayout {
 }
 
 export type ArrayLayout = Array<ILayout>
-
-export interface IWord{
-  word: string
-  finished: boolean
-}

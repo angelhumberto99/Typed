@@ -1,0 +1,17 @@
+.select {
+  border-radius: 5px;
+  height: 2rem;
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  color: var(--font-color);
+  option {
+    background-color: var(--frame-color);
+    border: none;
+  }
+}
+
+.select:focus {
+  outline: none;
+  background-color: var(--shadow);
+}

@@ -1,36 +1,47 @@
 import { useState, useEffect } from "react"
 
 interface IProps {
-  letter: string
-  endOfWord: boolean
-  handleEnd: () => void
+  ref: React.RefObject<HTMLDivElement> | null
 }
 
-const useKeyboard = ({letter, endOfWord, handleEnd}: IProps) => {
-  const [ typedWord, setTypedWord ] = useState<string>("")
-  const [ currentWord, setCurrentWord ] = useState<string>("")
-  const [ correctWord, setCorrectWord ] = useState<boolean>(false)
-  const [ currentIndexWord, setCurrentIndexWord ] = useState<number>(0)
+const useKeyboard = ({ref}: IProps) => {
+  const [ letter, setLetter ] = useState<string>('')
+  const [ word, setWord ] = useState<string>("")
+  const [ endOfWord, setEndOfWord ] = useState<boolean>(false)
+  const [ index, setIndex ] = useState<number>(0)
 
+  // Adds an event listener to a div element in order to handle the keyboard input
   useEffect(() => {
-    if (letter.length === 1) {
-      setTypedWord(prev => prev + letter)
-    } else if (letter === "Backspace") {
-      setTypedWord(prev => prev.replace(/.$/, ''))
-    }
+    ref?.current?.addEventListener("keydown", ({key}) => setLetter(key))
+    return () => ref?.current?.removeEventListener("keydown", () => setLetter(''))
+  }, [ref])
+
+  // Handles keyboard input
+  useEffect(() => {
+    if (letter.length === 1)
+      setWord(prev => prev + letter)
+    else if (letter === "Backspace")
+      setWord(prev => prev.replace(/.$/, ''))
   }, [letter])
 
+  // Resets keyboard input and current word
+  useEffect(() => {
+    if (letter.length > 0)
+      setLetter('')
+    if (letter === " " || letter === "Enter")
+      setEndOfWord(true)
+  }, [word])
+
+  // Checks every time you write a whole word
   useEffect(() => {
     if (endOfWord) {
-      setCorrectWord(typedWord === currentWord)
-      setTypedWord('')
-      handleEnd()
-      setCurrentIndexWord(prev => prev + 2)
-      console.log("cambiar de palabra")
+      setWord('')
+      setIndex(prev => prev + 2)
+      setEndOfWord(false)
     }
   }, [endOfWord])
 
-  return { typedWord, currentWord, correctWord, currentIndexWord }
+  return { letter, word, endOfWord, index }
 }
 
 export default useKeyboard

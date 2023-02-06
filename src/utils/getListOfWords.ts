@@ -1,10 +1,5 @@
-import { IWord } from "../types"
-
-const getListOfWords = (quote: string): Array<IWord> => {
-  return quote.split(/(\s+)/).map((word: string) => {
-    return { word, finished: false }
-  })
+const getListOfWords = (quote: string): Array<string> => {
+  return quote.split(/(\s+)/)
 }
-
 
 export default getListOfWords
