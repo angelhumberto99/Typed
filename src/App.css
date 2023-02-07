@@ -15,7 +15,7 @@
 
 .App[theme-attr=light] {
   background-color: #ccc;
-  --font-color: black;
+  --font-color: #202020;
   
   /* custom frame color */
   --frame-color: #ccc;
@@ -43,7 +43,7 @@
 
 .App[theme-attr=dark] {
   background-color: #202020;
-  --font-color: white;
+  --font-color: #ccc;
 
   /* custom frame color */
   --frame-color: #202020;

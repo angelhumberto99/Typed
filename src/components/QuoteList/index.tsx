@@ -2,11 +2,11 @@ import { useContext } from 'react'
 import { KeyboardContext } from '../../context'
 import { useCurrentWord } from '../../hooks'
 import Word from '../Word'
-import Timer from '../Timer'
+import TimeLine from '../TimeLine'
 import styles from './styles.module.scss'
 
 const QuoteList = () => {
-  const { letter, word, index } = useContext(KeyboardContext)
+  const { word, index } = useContext(KeyboardContext)
   const { currentWord, quotes } = useCurrentWord({index})
  
   return (
@@ -22,7 +22,7 @@ const QuoteList = () => {
           })
         }
       </p>
-      <Timer/>
+      <TimeLine/>
     </div>
   )
 }

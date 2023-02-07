@@ -1,0 +1,21 @@
+.board {
+  width: calc(90% - 4rem);
+  height: 1rem;
+  min-width: 650px;
+  max-width: 1200px;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.board p ~ p {
+  border-left: 1px solid var(--shadow);
+}
+
+.board > p {
+  width: 100%;
+  font-size: .9rem;
+  color: var(--font-color);
+  text-align: center;
+}
