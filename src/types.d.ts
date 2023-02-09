@@ -4,11 +4,11 @@ export interface IKey {
 }
 
 export interface IRow {
-  numeric: IKey[]
-  top: IKey[]
-  home: IKey[]
-  bottom: IKey[]
-  fn: IKey[]
+  numeric: Array<IKey>
+  top: Array<IKey>
+  home: Array<IKey>
+  bottom: Array<IKey>
+  fn: Array<IKey>
 }
 
 export interface ILayout {

@@ -1,13 +1,12 @@
 import { useContext } from 'react'
-import { KeyboardContext } from '../../context'
-import { useCurrentWord } from '../../hooks'
+import { KeyboardContext, WordContext } from '../../context'
 import Word from '../Word'
 import TimeLine from '../TimeLine'
 import styles from './styles.module.scss'
 
 const QuoteList = () => {
   const { word, index } = useContext(KeyboardContext)
-  const { currentWord, quotes } = useCurrentWord({index})
+  const { currentWord, quotes } = useContext(WordContext)
  
   return (
     <div className={styles.container}>

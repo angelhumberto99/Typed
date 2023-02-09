@@ -13,7 +13,6 @@ interface IProps {
 
 const Keyboard = ({ current, lang }: IProps) => {
   const { layout } = KEYS[lang]
-  
   return (
     <div className={styles.frame}>
       <div className={styles['inset-frame']}>
