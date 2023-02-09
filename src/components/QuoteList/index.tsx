@@ -10,7 +10,7 @@ const QuoteList = () => {
  
   return (
     <div className={styles.container}>
-      <p className={styles.paragraph}>
+      <p className={styles.paragraph} >
         {
           quotes.map((w:string, i:number) => {
             return (

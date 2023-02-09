@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const Word = ({active, current, typed, children}: IProps) => {
-  const { checkCorrectWords, getColor, ended } = useWord({ active, current, typed })
+  const { checkCorrectWords, getColor, ended, scroll } = useWord({ active, current, typed })
   const LAST_CHAR_INDEX = typed.length - 1
   const LAST_CHAR = typed[LAST_CHAR_INDEX]
   const overflow = active && typed.length > children.length && LAST_CHAR !== " "
@@ -23,7 +23,7 @@ const Word = ({active, current, typed, children}: IProps) => {
   }
 
   return (
-    <span className={getContainerStyles()}>
+    <span className={getContainerStyles()} ref={scroll}>
       {
         children.split('').map((letter:string, index:number) => {
           return <span className={styles[`${getColor(index)}`]} key={index}>{letter}</span>

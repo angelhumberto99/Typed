@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { Keyboard, QuoteList, LayoutDropdown, ThemeSelector, Analytics } from './components'
+import { Keyboard, QuoteList, LayoutDropdown, ThemeSelector, Analytics, Volumen } from './components'
 import { KeyboardContext, TimerContext, WordContext } from './context'
 import { useKeyboard, useTimer, useCurrentWord } from './hooks'
 import './App.css'
@@ -22,6 +22,7 @@ function App() {
     <div theme-attr={theme} className="App" tabIndex={0} ref={ref}>
       <header>
         <LayoutDropdown handler={handleLayout}/>
+        <Volumen/>
         <ThemeSelector theme-attr={theme} handler={handleTheme}/>
       </header>
       <KeyboardContext.Provider value={{word, letter, endOfWord, index}}>

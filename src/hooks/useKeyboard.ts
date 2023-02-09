@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import song from '../assets/soft-hit.wav'
+import { playAudio } from "../utils"
 
 interface IProps {
   ref: React.RefObject<HTMLDivElement> | null
@@ -18,10 +20,13 @@ const useKeyboard = ({ref}: IProps) => {
 
   // Handles keyboard input
   useEffect(() => {
-    if (letter.length === 1)
+    if (letter.length === 1) {
       setWord(prev => prev + letter)
-    else if (letter === "Backspace")
+      playAudio(song)
+    } else if (letter === "Backspace") {
       setWord(prev => prev.replace(/.$/, ''))
+      playAudio(song)
+    }
   }, [letter])
 
   // Resets keyboard input and current word

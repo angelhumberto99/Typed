@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface IProps {
   active: boolean
@@ -10,6 +10,7 @@ const useWord = ({active, current, typed }: IProps) => {
   const [ ended, setEnded ] = useState<string|null>(null)
   const LAST_CHAR_INDEX = typed.length - 1
   const LAST_CHAR = typed[LAST_CHAR_INDEX]
+  const scroll = useRef<HTMLSpanElement| null>(null)
 
   useEffect(() => {
     if (LAST_CHAR === " " && active) {
@@ -19,6 +20,11 @@ const useWord = ({active, current, typed }: IProps) => {
       setEnded(style)
     }
   }, [typed, current])
+
+  useEffect(() => {
+    if (active)
+      scroll.current?.scrollIntoView({behavior: 'smooth'})
+  }, [current, active])
   
   const checkCorrectWords = (): string|boolean => {
     if (!active) return false
@@ -34,7 +40,7 @@ const useWord = ({active, current, typed }: IProps) => {
     return condition ? 'success' : 'wrong'
   }
 
-  return { checkCorrectWords, getColor, ended }
+  return { checkCorrectWords, getColor, ended, scroll }
 }
 
 export default useWord

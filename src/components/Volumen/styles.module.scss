@@ -1,0 +1,9 @@
+.volumen {
+  height: .5rem;
+  width: .3rem;
+  background-color: var(--font-color);
+  border-right: .5rem solid var(--font-color);
+  border-top: .5rem solid var(--frame-color);
+  border-bottom: .5rem solid var(--frame-color);
+  cursor: pointer;
+}
