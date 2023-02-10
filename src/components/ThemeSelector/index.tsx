@@ -1,21 +1,19 @@
-import { BsMoonStarsFill, BsFillSunFill } from 'react-icons/Bs'
-import { useState, useEffect } from 'react'
+import { useContext } from 'react'
+import { SettingsContext } from '../../context'
+import { BsFillSunFill } from 'react-icons/Bs'
 import styles from './styles.module.scss'
 
-export interface IProps {
-  handler: (theme:string) => void
-}
+const ThemeSelector = () => {
+  const { theme, setTheme } = useContext(SettingsContext)
 
-const ThemeSelector = ({handler}: IProps) => {
-  const [toggle, setToggle] = useState<boolean>(false)
-  
-  useEffect(() => {
-    handler(toggle ? "dark": "light")
-  }, [toggle])
+  const handleClick = () => {
+    if (setTheme === null) return
+    setTheme(theme === "light" ? 'dark': 'light')
+  }
   
   return (
-    <button className={styles.selector} onClick={() => {setToggle(prev => !prev)}}>
-      <div className={`${styles.overlap} ${!toggle && styles.active}`}>
+    <button tabIndex={-1} className={styles.selector} onClick={handleClick}>
+      <div className={`${styles.overlap} ${theme === "light" && styles.active}`}>
         <div className={styles.sun}>
           <BsFillSunFill size={25}/>
         </div>

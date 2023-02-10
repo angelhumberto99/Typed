@@ -5,7 +5,7 @@ interface IProps {
   index: number
 }
 
-const quote:string = "Lorem ipsum dolor"
+const quote:string = "lorem ipsum dolor sit amet"
 
 const useCurrentWord = ({index}: IProps) => {
   const [ quotes, setQuotes] = useState<Array<string>>(getListOfWords(quote))

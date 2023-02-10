@@ -1,9 +1,103 @@
-.volumen {
-  height: .5rem;
-  width: .3rem;
-  background-color: var(--font-color);
-  border-right: .5rem solid var(--font-color);
-  border-top: .5rem solid var(--frame-color);
-  border-bottom: .5rem solid var(--frame-color);
+.container {
+  border: none;
+  background-color: transparent;
+  width: 1.2rem;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.container:focus {
+  outline: none;
+}
+
+.container:hover {
+  .volumen {
+    border-right: .5rem solid var(--shadow);
+    &::before {
+      background-color:var(--shadow);
+    }
+  }
+  .sound {
+    opacity: 10%;
+  }
+}
+
+.active {
+  .sound {
+    opacity: 0;
+  }
+  .volumen::after {
+    opacity: 1;
+  }
+}
+
+.active:hover {
+  .sound {
+    opacity: 0;
+  }
+  .volumen::after {
+    opacity: 10%;
+  }
+}
+
+.volumen::after {
+  content: "";
+  rotate: 25deg;
+  opacity: 0;
+  position: absolute;
+  width: .1rem;
+  height: 1.5rem;
+  top: -.5rem;
+  left: .5rem;
+  border-radius: 3px;
+  background-color: var(--accent-red);
+  transition: all 0.3s ease;
+}
+
+.volumen {
+  position: relative;
+  height: .5rem;
+  width: .2rem;
+  border-right: .5rem solid var(--font-color);
+  border-top: .5rem solid transparent;
+  border-bottom: .5rem solid transparent;
+  border-radius: 5px;
+  transition: all .3s ease;
+}
+
+.volumen::before {
+  content: "";
+  position: absolute;
+  width: .1rem;
+  height: .5rem;
+  border-radius: 1px 0 0 1px;
+  background-color: var(--font-color);
+  transition: all .3s ease;
+}
+
+.sound {
+  position: relative;
+  width: .1rem;
+  height: .5rem;
+  border-right: 1px solid var(--font-color);
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  transition: all .3s ease;
+}
+
+.sound:before {
+  content: "";
+  position: absolute;
+  top: -.25rem;
+  right: -4px;
+  width: .3rem;
+  height: 1rem;
+  border-right: 1px solid var(--font-color);
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  transition: all .3s ease;
 }

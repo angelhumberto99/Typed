@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react"
-import song from '../assets/soft-hit.wav'
 import { playAudio } from "../utils"
+import song from '../assets/soft-hit.wav'
 
 interface IProps {
   ref: React.RefObject<HTMLDivElement> | null
+  audio: boolean
+  startTimer: () => void
+  time: number
 }
 
-const useKeyboard = ({ref}: IProps) => {
+const useKeyboard = ({ref, audio, time, startTimer }: IProps) => {
   const [ letter, setLetter ] = useState<string>('')
   const [ word, setWord ] = useState<string>("")
   const [ endOfWord, setEndOfWord ] = useState<boolean>(false)
   const [ index, setIndex ] = useState<number>(0)
+  const [ firstPress, setFirstPress ] = useState<boolean>(false)
 
   // Adds an event listener to a div element in order to handle the keyboard input
   useEffect(() => {
@@ -22,12 +26,28 @@ const useKeyboard = ({ref}: IProps) => {
   useEffect(() => {
     if (letter.length === 1) {
       setWord(prev => prev + letter)
-      playAudio(song)
+      audio && playAudio(song)
     } else if (letter === "Backspace") {
       setWord(prev => prev.replace(/.$/, ''))
-      playAudio(song)
+      audio && playAudio(song)
+    }
+    
+    if (!firstPress && letter !== '') {
+      setFirstPress(true)
+      startTimer()
     }
   }, [letter])
+
+  // checks if timer has been restarted
+  useEffect(() => {
+    if (time === 0) {
+      setFirstPress(false)
+      setLetter('')
+      setWord('')
+      setIndex(0)
+      setEndOfWord(false)
+    }
+  }, [time])
 
   // Resets keyboard input and current word
   useEffect(() => {
