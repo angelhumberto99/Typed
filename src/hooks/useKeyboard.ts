@@ -6,10 +6,10 @@ interface IProps {
   ref: React.RefObject<HTMLDivElement> | null
   audio: boolean
   startTimer: () => void
-  time: number
+  interv: NodeJS.Timer | null
 }
 
-const useKeyboard = ({ref, audio, time, startTimer }: IProps) => {
+const useKeyboard = ({ ref, audio, interv, startTimer }: IProps) => {
   const [ letter, setLetter ] = useState<string>('')
   const [ word, setWord ] = useState<string>("")
   const [ endOfWord, setEndOfWord ] = useState<boolean>(false)
@@ -23,31 +23,36 @@ const useKeyboard = ({ref, audio, time, startTimer }: IProps) => {
   }, [ref])
 
   // Handles keyboard input
-  useEffect(() => {
-    if (letter.length === 1) {
+  const handleKeyDown = () => {
+    if (letter.length === 1)
       setWord(prev => prev + letter)
-      audio && playAudio(song)
-    } else if (letter === "Backspace") {
+    else if (letter === "Backspace")
       setWord(prev => prev.replace(/.$/, ''))
-      audio && playAudio(song)
-    }
-    
-    if (!firstPress && letter !== '') {
+    letter.length > 0 && audio && playAudio(song)
+  }
+
+  useEffect(() => {
+    if (firstPress)
+      handleKeyDown()
+    else if (!firstPress && letter !== '') {
       setFirstPress(true)
       startTimer()
     }
   }, [letter])
 
   // checks if timer has been restarted
+  const resetAll = () => {
+    setFirstPress(false)
+    setLetter('')
+    setWord('')
+    setIndex(0)
+    setEndOfWord(false)
+  }
+
   useEffect(() => {
-    if (time === 0) {
-      setFirstPress(false)
-      setLetter('')
-      setWord('')
-      setIndex(0)
-      setEndOfWord(false)
-    }
-  }, [time])
+    if (interv === null && firstPress)
+      resetAll()
+  }, [interv])
 
   // Resets keyboard input and current word
   useEffect(() => {
@@ -56,6 +61,11 @@ const useKeyboard = ({ref, audio, time, startTimer }: IProps) => {
     if (letter === " " || letter === "Enter")
       setEndOfWord(true)
   }, [word])
+
+  useEffect(() => {
+    if (firstPress)
+      setLetter('')
+  }, [firstPress])
 
   // Checks every time you write a whole word
   useEffect(() => {

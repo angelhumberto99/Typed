@@ -32,3 +32,21 @@
 .paragraph::-webkit-scrollbar {
   display: none;
 }
+
+.start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-color);
+  animation: breathing 2s ease-in-out infinite;
+}
+
+@keyframes breathing {
+  0% {
+    opacity: 1;
+  } 50% {
+    opacity: 10%;
+  } 100% {
+    opacity: 1;
+  }
+}

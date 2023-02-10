@@ -7,7 +7,7 @@ const TimeLine = () => {
 
   return (
     <div className={styles.container}>
-      <progress className={styles.progress} max="100" value={time%100}/>
+      <progress className={styles.progress} max="60" value={time%60}/>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import { createContext } from 'react'
 
 interface ITimer {
   time: number
+  interv: NodeJS.Timer | null
   startTimer: () => void
   stopTimer: () => void
   resetTimer: () => void
@@ -9,6 +10,7 @@ interface ITimer {
 
 const initialState = {
   time: 0,
+  interv: null,
   startTimer: () => {},
   stopTimer: () => {},
   resetTimer: () => {}

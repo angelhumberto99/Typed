@@ -1,8 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-const useTimer = (milliSeconds: number = 1000) => {
+interface IProps {
+  milliSeconds: number
+  boundary: number
+}
+
+const defaultValues = {
+  milliSeconds:1000,
+  boundary:60
+}
+
+const useTimer = ({milliSeconds, boundary}: IProps = defaultValues) => {
   const [ time, setTime ] = useState<number>(0)
   const [ interv, setInterv ] = useState<NodeJS.Timer | null>(null)
+
+  useEffect(() => {
+    if (time === boundary)
+      resetTimer()
+  }, [time])
 
   const startTimer = ():void => {
     if (interv) return
@@ -21,7 +36,7 @@ const useTimer = (milliSeconds: number = 1000) => {
     setTime(0)
   }
 
-  return { time, startTimer, stopTimer, resetTimer }
+  return { time, interv, startTimer, stopTimer, resetTimer }
 }
 
 export default useTimer

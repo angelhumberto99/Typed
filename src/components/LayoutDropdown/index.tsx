@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { SettingsContext } from '../../context'
+import { SettingsContext, FocusContext } from '../../context'
 import { ArrayLayout, ILayout } from '../../types'
 import Layouts from '../../layouts.json'
 import styles from './styles.module.scss'
@@ -8,8 +8,11 @@ const layouts: ArrayLayout = Layouts as ArrayLayout
 
 const LayoutDropdown = () => {
   const { setLangIndex } = useContext(SettingsContext)
+  const { focus } = useContext(FocusContext)
+
   const handleClick = ({target}: React.ChangeEvent<HTMLSelectElement>) => {
     if (setLangIndex === null) return
+    focus?.current?.focus()
     setLangIndex(target.selectedIndex)
   }
 

@@ -1,13 +1,15 @@
 import { useContext } from 'react'
-import { SettingsContext } from '../../context'
+import { SettingsContext, FocusContext } from '../../context'
 import { BsFillSunFill } from 'react-icons/Bs'
 import styles from './styles.module.scss'
 
 const ThemeSelector = () => {
   const { theme, setTheme } = useContext(SettingsContext)
+  const { focus } = useContext(FocusContext)
 
   const handleClick = () => {
     if (setTheme === null) return
+    focus?.current?.focus()
     setTheme(theme === "light" ? 'dark': 'light')
   }
   

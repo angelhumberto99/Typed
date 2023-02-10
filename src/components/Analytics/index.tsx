@@ -9,7 +9,7 @@ const Analytics = () => {
     <div className={styles.board}>
       <p>{time} <small>correct</small></p>
       <p>{time} <small>wrong</small></p>
-      <p>{time} <small>seg</small></p>
+      <p>{60 - time} <small>seg</small></p>
       <p>{time} <small>wpm</small></p>
     </div>
   )

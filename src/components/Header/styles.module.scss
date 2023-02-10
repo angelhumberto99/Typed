@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300;500&family=Parisienne&family=Roboto:ital,wght@0,100;0,300;0,500;1,100&family=Yellowtail&display=swap');
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  width: calc(90% - 4rem);
+  min-width: 650px;
+  max-width: 1000px;
+  display: flex;
+  height: 3rem;
+  margin: .5rem 0;
+}
+
+.logo {
+  font-family: 'Yellowtail', cursive;
+  flex: 3;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: justify;
+  gap: 1rem;
+  color: var(--font-color);
+}
+
+.settings {
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+  padding-left: 2rem;
+  border-left: 1px solid var(--shadow);
+  justify-content: space-around;
+  align-items: center;
+}

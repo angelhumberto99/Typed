@@ -68,10 +68,3 @@
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
 }
-
-header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-}

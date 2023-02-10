@@ -1,12 +1,14 @@
 import { useContext } from 'react'
-import { SettingsContext } from '../../context'
+import { SettingsContext, FocusContext } from '../../context'
 import styles from './styles.module.scss'
 
 const Volumen = () => {
   const { audio, setAudio } = useContext(SettingsContext)
+  const { focus } = useContext(FocusContext)
 
   const handleClick = () => {
     if (setAudio === null) return
+    focus?.current?.focus()
     setAudio(prev => !prev)
   }
 
