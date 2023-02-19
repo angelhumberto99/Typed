@@ -9,13 +9,15 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .board p ~ p {
   border-left: 1px solid var(--shadow);
 }
 
 .board > p {
+  font-style: italic !important;
   width: 100%;
-  font-size: .9rem;
+  font-size: 1rem;
   color: var(--font-color);
   text-align: center;
 }

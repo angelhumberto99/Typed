@@ -22,9 +22,9 @@
   { 
     "lang": "Deutch ISO",
     "layout": {
-      "numeric": [{"main": "^", "alter": "°"},{ "main": "1", "alter": "!"},{ "main": "2", "alter": "\""},{ "main": "3", "alter": "§"},{ "main": "4", "alter": "$"},{ "main": "5", "alter": "%"},{ "main": "6", "alter": "&"},{ "main": "7", "alter": "/"},{ "main": "8", "alter": "("},{ "main": "9", "alter": ")"},{ "main": "0", "alter": "="},{ "main": "ß", "alter": "?"},{ "main": "´", "alter": "`"},{ "main": "Backspace"}],
-      "top": [{"main": "Tab"},{"main": "q"},{"main": "w"},{"main": "e"},{"main": "r"},{"main": "t"},{"main": "z"},{"main": "u"},{"main": "i"},{"main": "o"},{"main": "p"},{"main": "ü"},{"main": "+", "alter": "*"},{"main": "isoretup"}],
-      "home": [{"main": "CapsLock"},{"main": "a"},{"main": "s"},{"main": "d"},{"main": "f"},{"main": "g"},{"main": "h"},{"main": "j"},{"main": "k"},{"main": "l"},{"main": "ö"},{"main": "ä"},{"main": "#", "alter": "'"},{"main":"isoretdown"}],
+      "numeric": [{"main": "^", "alter": "°"},{ "main": "1", "alter": "!"},{ "main": "2", "alter": "\""},{ "main": "3", "alter": "§"},{ "main": "4", "alter": "$"},{ "main": "5", "alter": "%"},{ "main": "6", "alter": "&"},{ "main": "7", "alter": "/"},{ "main": "8", "alter": "("},{ "main": "9", "alter": ")"},{ "main": "0", "alter": "="},{ "main": "\u03B2", "alter": "?"},{ "main": "´", "alter": "`"},{ "main": "Backspace"}],
+      "top": [{"main": "Tab"},{"main": "q"},{"main": "w"},{"main": "e"},{"main": "r"},{"main": "t"},{"main": "z"},{"main": "u"},{"main": "i"},{"main": "o"},{"main": "p"},{"main": "\u00DC"},{"main": "+", "alter": "*"},{"main": "isoretup"}],
+      "home": [{"main": "CapsLock"},{"main": "a"},{"main": "s"},{"main": "d"},{"main": "f"},{"main": "g"},{"main": "h"},{"main": "j"},{"main": "k"},{"main": "l"},{"main": "\u00D6"},{"main": "\u00C4"},{"main": "#", "alter": "'"},{"main":"isoretdown"}],
       "bottom": [{"main": "lshift"},{"main": "<", "alter": ">"},{"main": "y"},{"main": "x"},{"main": "c"},{"main": "v"},{"main": "b"},{"main": "n"},{"main": "m"},{"main": ",", "alter": ";"},{"main": ".", "alter": ":"},{"main": "-", "alter": "_"},{"main":"rshift"}],
       "fn": [{"main": "lctrl"},{"main": "lwin"},{"main":"Alt"},{"main":" "},{"main":"AltGraph"},{"main":"rwin"},{"main":"fn"},{"main":"rctrl"}]
     }

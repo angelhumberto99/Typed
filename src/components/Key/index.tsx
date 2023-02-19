@@ -14,7 +14,7 @@ const Key = ({ children, active }: IProps) => {
   const ISO: boolean = children.main.includes('isoretdown')
   const { main, alter }: IKey = children
   const LATCH: string = `${main === "f" || main === "j"}`
-  const FN_KEYS: boolean = main.length !== 1
+  const FN_KEYS: boolean = main.length !== 1 && Boolean(main.match(/\w/))
   const ACTIVE = interv !== null && active
 
   return ( 
@@ -23,7 +23,11 @@ const Key = ({ children, active }: IProps) => {
           !FN_KEYS
           ? <div latch-attr={LATCH} className={styles.layout}>
               <span className={styles.alter}>{alter}</span>
-              <span className={styles.main}>{main.toUpperCase()}</span>
+              <span className={styles.main}>{
+                !main.match(/\w/)
+                ? main
+                : main.toUpperCase()
+              }</span>
             </div>
           : null
         }
