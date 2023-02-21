@@ -26,13 +26,24 @@ const Word = ({active, current, typed, children}: IProps) => {
     <span className={getContainerStyles()} ref={scroll}>
       {
         children.split('').map((letter:string, index:number) => {
-          return <span className={styles[`${getColor(index)}`]} key={index}>{letter}</span>
+            return (
+              <>
+                { active && index === typed.length && typed.length === 0 && <span className={styles.gutter}>&nbsp;</span> }
+                <span className={styles[`${getColor(index)}`]} key={index}>{letter}</span>
+                { active && index === LAST_CHAR_INDEX && <span className={styles.gutter}>&nbsp;</span> }
+              </>
+            )
         })
       }
       {
         overflow && 
         typed.substring(children.length).split('').map((err: string, iErr: number) => {
-          return <span className={styles.wrong} key={`${err}${iErr}`}>{err}</span>
+          return (
+            <>
+              <span className={styles.wrong} key={`${err}${iErr}`}>{err}</span>
+              { (LAST_CHAR_INDEX - children.length) === iErr && <span className={styles.gutter}>&nbsp;</span> }
+            </>
+          )
         })
       }
       <span className={styles.particle}/>
