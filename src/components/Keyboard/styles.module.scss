@@ -1,5 +1,5 @@
 .frame {
-  width: calc(90% - 4rem);
+  width: 90%;
   min-width: 650px;
   max-width: 1000px;
   border: 2rem solid var(--frame-color);
@@ -28,4 +28,10 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 768px) {
+  .frame {
+    transform: scale(.8);
+  }
 }

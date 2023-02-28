@@ -5,16 +5,25 @@ interface IProps {
   index: number
 }
 
-const quote:string = "lorem ipsum dolor sit amet"
-
 const useCurrentWord = ({index}: IProps) => {
-  const [ quotes, setQuotes] = useState<Array<string>>(getListOfWords(quote))
-  const [ currentWord, setCurrentWord ] = useState<string>(quotes[0])
+  const [ quotes, setQuotes] = useState<Array<string>>([""])
+  const [ currentWord, setCurrentWord ] = useState<string>("")
+
+  const getQuote = async () => {
+    const res = await fetch("https://api.quotable.io/random")
+    const content = await res.json()
+    return getListOfWords(content?.content)
+  }
 
   useEffect(() => {
-    if (index >= quotes.length - 1){
-      // TODO: get new quotes from API
-      setQuotes(prev => [...prev, ' ', ...prev])
+    if (index >= quotes.length - 1 || index === 0){
+      getQuote().then((res) => {
+        if (index === 0) {
+          setQuotes(res)
+        } else {
+          setQuotes(prev => [...prev, ' ', ...res])
+        }
+      })
     } else
       setCurrentWord(quotes[index])
   }, [index])

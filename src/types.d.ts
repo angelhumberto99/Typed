@@ -11,8 +11,14 @@ export interface IRow {
   fn: Array<IKey>
 }
 
+export interface ISide {
+  left: string
+  right: string
+}
+
 export interface ILayout {
   lang: string
+  side: ISide
   layout: IRow
 }
 

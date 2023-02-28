@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface IProps {
   currentWord: string
@@ -12,6 +13,7 @@ const useWordAnalytics = ({currentWord, word, endOfWord, interv, time}: IProps) 
   const [ wrong, setWrong ] = useState(0)
   const [ correct, setCorrect ] = useState(0)
   const [ wpm, setWpm ] = useState(0)
+  const navigate = useNavigate()
 
   const handlePrecision = () => {
     if (!endOfWord) return
@@ -40,6 +42,13 @@ const useWordAnalytics = ({currentWord, word, endOfWord, interv, time}: IProps) 
       calc = Math.trunc((60/time)*(correct-wrong))
     setWpm(calc)
   }, [wrong, correct, time])
+
+  useEffect(() => {
+    // TODO: prevent this from happening when user restarts
+    if (time === 0 && wpm !== 0) {
+      navigate("rating", { state: {wpm, correct, wrong}})
+    }
+  }, [time])
 
   return { wrong, correct, wpm }
 }

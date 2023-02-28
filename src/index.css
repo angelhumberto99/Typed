@@ -10,10 +10,12 @@
   -webkit-text-size-adjust: 100%;
 }
 
-body {
+* {
   margin: 0;
+  padding: 0;
+}
+
+body, html {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
 }

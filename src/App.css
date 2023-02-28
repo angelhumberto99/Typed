@@ -1,21 +1,21 @@
-#root {
-  max-width: 1280px;
-}
-
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   --accent-blue: rgb(110, 182, 221);
   --accent-red: rgb(245, 99, 99);
   --inner-frame-color: #242424;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
 }
 
 .App[theme-attr=light] {
   background-color: #ccc;
   --font-color: #202020;
+  --accent-color: rgba(0, 0, 0, 0.3);
   
   /* custom frame color */
   --frame-color: #ccc;
@@ -44,7 +44,8 @@
 .App[theme-attr=dark] {
   background-color: #202020;
   --font-color: #ccc;
-
+  --accent-color: rgb(49, 183, 255);
+  
   /* custom frame color */
   --frame-color: #202020;
   --frame-shadow-inset: inset 5px 5px 20px #24242436,
@@ -67,4 +68,10 @@
   transition-property: background-color, color, background-image;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
+}
+
+@media (max-width: 700px) {
+  .App {
+    width: 100%;
+  }
 }

@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const Keyboard = ({ current, lang }: IProps) => {
-  const { layout } = KEYS[lang]
+  const { layout, side } = KEYS[lang]
   return (
     <div className={styles.frame}>
       <div className={styles['inset-frame']}>
@@ -22,7 +22,7 @@ const Keyboard = ({ current, lang }: IProps) => {
             {
               layout[row as keyof IRow].map((key:IKey, index:number) => {
                 return <Key key={index}
-                  active={getActiveKey(key, current)}
+                  active={getActiveKey(key, current, side)}
                 >{key}</Key>
               })
             }

@@ -1,7 +1,7 @@
 .container {
   position: relative;
   margin-top: 4rem;
-  width: calc(90% - 4rem);
+  width: 90%;
   min-width: 650px;
   max-width: 1200px;
   height: 100%;
@@ -48,5 +48,11 @@
     opacity: 10%;
   } 100% {
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    transform: scale(.8);
   }
 }

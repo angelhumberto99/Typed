@@ -71,23 +71,3 @@
     color: var(--accent-red);
   }
 }
-
-.gutter {
-  background-color: var(--accent-blue);
-  display: inline-flex;
-  width: 2px;
-  padding: 0;
-  margin: 0;
-  align-items: center;
-  animation: bouncing 1s .5s ease-in-out infinite;
-}
-
-@keyframes bouncing {
-  0% {
-    height: 1.5rem;
-  } 50% {
-    height: 0;
-  } 100% {
-    height: 1.5rem;
-  }
-}

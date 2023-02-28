@@ -1,4 +1,7 @@
+import React from 'react';
 import { useWord } from '../../hooks'
+import OverflowedWord from '../OverflowedWord';
+import Gutter from '../Gutter'
 import styles from './styles.module.scss'
 
 interface IProps {
@@ -27,28 +30,20 @@ const Word = ({active, current, typed, children}: IProps) => {
       {
         children.split('').map((letter:string, index:number) => {
             return (
-              <>
-                { active && index === typed.length && typed.length === 0 && <span className={styles.gutter}>&nbsp;</span> }
-                <span className={styles[`${getColor(index)}`]} key={index}>{letter}</span>
-                { active && index === LAST_CHAR_INDEX && <span className={styles.gutter}>&nbsp;</span> }
-              </>
+              <React.Fragment key={index}>
+                { active && index === typed.length && <Gutter/> }
+                <span className={styles[`${getColor(index)}`]}>{letter}</span>
+              </React.Fragment>
             )
         })
       }
-      {
-        overflow && 
-        typed.substring(children.length).split('').map((err: string, iErr: number) => {
-          return (
-            <>
-              <span className={styles.wrong} key={`${err}${iErr}`}>{err}</span>
-              { (LAST_CHAR_INDEX - children.length) === iErr && <span className={styles.gutter}>&nbsp;</span> }
-            </>
-          )
-        })
-      }
+      { active && typed.length === children.length && <Gutter/> }
+      { overflow && <OverflowedWord typed={typed} word={children}/> }
       <span className={styles.particle}/>
     </span>
   )
 }
+
+
 
 export default Word
