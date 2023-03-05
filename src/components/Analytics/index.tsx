@@ -4,10 +4,10 @@ import { TimerContext, KeyboardContext, WordContext } from '../../context'
 import styles from './styles.module.scss'
 
 const Analytics = () => {
-  const { time, interv } = useContext(TimerContext)
+  const { time, interv, ended } = useContext(TimerContext)
   const { word, endOfWord } = useContext(KeyboardContext)
   const { currentWord } = useContext(WordContext)
-  const { wrong, correct, wpm } = useWordAnalytics({currentWord, word, endOfWord, interv, time})
+  const { wrong, correct, wpm } = useWordAnalytics({currentWord, word, endOfWord, interv, time, ended})
 
   return (
     <div className={styles.board}>

@@ -19,6 +19,7 @@ const useKeyboard = ({ ref, audio, interv, startTimer }: IProps) => {
   // Adds an event listener to a div element in order to handle the keyboard input
   useEffect(() => {
     ref?.current?.addEventListener("keydown", ({key}) => setLetter(key))
+    ref?.current?.focus()
     return () => ref?.current?.removeEventListener("keydown", () => setLetter(''))
   }, [ref])
 

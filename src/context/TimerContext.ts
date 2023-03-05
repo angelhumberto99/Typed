@@ -6,6 +6,7 @@ interface ITimer {
   startTimer: () => void
   stopTimer: () => void
   resetTimer: () => void
+  ended: boolean
 }
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
   interv: null,
   startTimer: () => {},
   stopTimer: () => {},
-  resetTimer: () => {}
+  resetTimer: () => {},
+  ended: false
 }
 
 const TimerContext = createContext<ITimer>(initialState)

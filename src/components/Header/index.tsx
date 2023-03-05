@@ -7,7 +7,11 @@ import { Link } from 'react-router-dom'
 import { FocusContext } from '../../context'
 import styles from './styles.module.scss'
 
-const Header = () => {
+interface IProps {
+  main: boolean
+}
+
+const Header = ({main}: IProps) => {
   const { focus } = useContext(FocusContext)
 
   const handleClick = () => {
@@ -17,14 +21,19 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.content}>
-        <Link className={styles.link} to={"/"} tabIndex={-1} onClick={handleClick}>
+        <Link className={styles.link} to={"/"} tabIndex={!main? 1: -1} onClick={handleClick}>
           <h1 className={styles.logo}>
             <BsKeyboardFill/> Typed
           </h1>
         </Link>
         <div className={styles.settings}>
-          <LayoutDropdown/>
-          <Volumen/>
+          {
+            main && 
+            <>
+              <LayoutDropdown/>
+              <Volumen/>
+            </>
+          }
           <ThemeSelector/>
         </div>
       </div>

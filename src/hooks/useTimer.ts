@@ -13,10 +13,11 @@ const defaultValues = {
 const useTimer = ({milliSeconds, boundary}: IProps = defaultValues) => {
   const [ time, setTime ] = useState<number>(0)
   const [ interv, setInterv ] = useState<NodeJS.Timer | null>(null)
+  const [ ended, setEnded ] = useState<boolean>(false)
 
   useEffect(() => {
     if (time === boundary)
-      resetTimer()
+      resetTimer(true)
   }, [time])
 
   const startTimer = ():void => {
@@ -31,12 +32,13 @@ const useTimer = ({milliSeconds, boundary}: IProps = defaultValues) => {
     setInterv(null)
   }
   
-  const resetTimer = ():void => {
+  const resetTimer = (end:boolean = false):void => {
     stopTimer()
     setTime(0)
+    setEnded(end)
   }
 
-  return { time, interv, startTimer, stopTimer, resetTimer }
+  return { time, interv, startTimer, stopTimer, resetTimer, ended }
 }
 
 export default useTimer
