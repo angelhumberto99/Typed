@@ -1,48 +1,49 @@
 import { useLocation } from 'react-router-dom'
-import { Header } from '../../components'
-import { Chart } from 'react-chartjs-2'
+import { useContext } from 'react'
+import { usePlotter } from '../../hooks'
+import { SettingsContext } from '../../context'
+import { calcPresition } from '../../utils'
+import { Header, Percentage, Restart } from '../../components'
+import { Line } from 'react-chartjs-2'
 import 'chart.js/auto'
-import styles from '../styles.module.scss'
+import GlobalStyles from '../styles.module.scss'
+import styles from './styles.module.scss'
 
 const Rating = () => {
-  const {state} = useLocation()
-  // provitional data
-  const data = {
-    labels: [...(Array(61).keys())].filter(e => e%2 === 0),
-    datasets: [{
-      label: "correct",
-      data: [{x:15, y: 15},{x:5, y: 2}],
-      backgroundColor: "blue",
-      borderColor: "blue",
-      borderWidth: 1
-    },
-    {
-      label: "Wrong",
-      data: [{x:2, y: 20},{x:4, y: 10}],
-      backgroundColor: "red",
-      borderColor: "red",
-      borderWidth: 1
-    }
-    ]
-  }
-
-  const calcPresition = ({correct, wrong}:{correct: number, wrong: number}) => {
-    return ((100/(correct + wrong)) * correct).toFixed(2)
-  }
+  const { state } = useLocation()
+  const { theme } = useContext(SettingsContext)
+  const { options, data } = usePlotter({theme, timeBoundary: 60})
+  const percent = calcPresition(state)
 
   return (
-    <div className={styles.container}>
+    <div className={GlobalStyles.container}>
       <Header main={false}/>
-      { data && <Chart type={"line"} data={data}/> }
-      <p>
-        WPM: {state.wpm}
-        <br/>
-        Correct: {state.correct}
-        <br/>
-        Wrong: {state.wrong}
-        <br/>
-        Accuracy: {calcPresition(state)} %
-      </p>
+      <div className={styles['main-content']}>
+        { data && <Line data={data} options={options}/> }
+      </div>
+      <ul className={styles.info}>
+        <li>
+          <Percentage animation={true} percent={percent}>
+            Acuracy
+          </Percentage>
+        </li>
+        <li>
+          <Percentage animation={false} percent={state.wpm}>
+            WPM
+          </Percentage>
+        </li>
+        <li>
+          <Percentage animation={false} percent={state.correct}>
+            Correct
+          </Percentage>
+        </li>
+        <li>
+          <Percentage animation={false} percent={state.wrong}>
+            Incorrect
+          </Percentage>
+        </li>
+      </ul>
+      <Restart nav={true}/>
     </div>
   )
 }

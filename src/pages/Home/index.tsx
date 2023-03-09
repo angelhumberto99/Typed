@@ -21,7 +21,7 @@ const Home = () => {
             <WordContext.Provider value={{currentWord, quotes}}>
               <QuoteList start={interv}/>
               <Analytics/>
-              <Restart/>
+              <Restart nav={false}/>
               <Keyboard current={currentKey} lang={langIndex}/>
             </WordContext.Provider>
           </KeyboardContext.Provider>

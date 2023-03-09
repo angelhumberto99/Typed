@@ -1,21 +1,31 @@
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FocusContext, TimerContext } from '../../context'
-import { MdRestartAlt } from 'react-icons/md'
+import { MdRestartAlt, MdArrowForwardIos } from 'react-icons/md'
 import styles from './styles.module.scss'
 
-const Restart = () => {
+interface IProps {
+  nav: boolean
+}
+
+const Restart = ({nav}: IProps) => {
   const { resetTimer } = useContext(TimerContext)
   const { focus } = useContext(FocusContext)
+  const navigate = useNavigate()
 
   const handleClick = () => {
-    focus?.current?.focus()
-    resetTimer()
+    if (nav) {
+      navigate('/')
+    } else {
+      focus?.current?.focus()
+      resetTimer()
+    }
   }
 
   return (
     <button tabIndex={0} onClick={handleClick} className={styles.restart}>
       <div className={styles.logo}>
-        <MdRestartAlt size={25}/>
+        { nav ? <MdArrowForwardIos size={25}/>: <MdRestartAlt size={25}/> }
       </div>
     </button>
   )

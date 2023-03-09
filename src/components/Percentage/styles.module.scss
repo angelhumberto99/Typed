@@ -1,0 +1,98 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  color: var(--font-color);
+  width: 100px;
+  text-align: center;
+}
+
+.container > span {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.info {
+  background-color: var(--font-color);
+  border-radius: 3px;
+  padding: .5rem;
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  color: var(--frame-color);
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.info::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: solid 10px var(--font-color);
+  border-left: transparent 10px solid;
+  border-right: transparent 10px solid;
+}
+
+.container:hover > .info {
+  opacity: 1;
+  visibility: visible;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.circle > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: 500;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 50%;
+  font-style: italic;
+  color: var(--font-color);
+}
+
+.progress {
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: var(--frame-shadow);
+}
+
+.progress > circle {
+  stroke-width: 10px;
+  stroke: transparent;
+  fill: none;
+  --dash-length: 283;
+  stroke-dasharray: var(--dash-length);
+  stroke-dashoffset: var(--dash-length);
+  stroke-linecap: round;
+  stroke: var(--accent-blue);
+  animation: accelerate 1s ease-in-out forwards;
+}
+
+@keyframes accelerate {
+  from {
+    stroke-dashoffset: var(--dash-length);
+  } to {
+    stroke-dashoffset: var(--progress);
+  }
+}
+
