@@ -9,6 +9,7 @@ const Volumen = () => {
   const handleClick = () => {
     if (setAudio === null) return
     focus?.current?.focus()
+    localStorage.setItem(import.meta.env.VITE_AUDIO, String(!audio))
     setAudio(prev => !prev)
   }
 

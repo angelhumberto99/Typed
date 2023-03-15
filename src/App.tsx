@@ -1,18 +1,20 @@
-import { useState } from 'react'
 import { SettingsContext } from './context'
-import { Route, Routes, BrowserRouter, HashRouter } from 'react-router-dom'
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import { Home, Rating } from './pages'
+import { useSettings } from './hooks'
 import './App.css'
 
 function App() {
-  const [ langIndex, setLangIndex ] = useState<number>(0)
-  const [ theme, setTheme ] = useState<string>('light')
-  const [ audio, setAudio ] = useState<boolean>(true)
-  
+  const { 
+    langIndex, setLangIndex, 
+    theme, setTheme, 
+    audio, setAudio 
+  } = useSettings()
+
   return (
     <div theme-attr={theme} className="App">
       <SettingsContext.Provider value={{audio, setAudio, langIndex, setLangIndex, theme, setTheme}}>
-        <BrowserRouter basename='/Typed'>
+        <BrowserRouter basename='/Typed/'>
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="rating" element={<Rating/>}/>

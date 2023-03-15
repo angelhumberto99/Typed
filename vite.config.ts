@@ -10,6 +10,7 @@ export default defineConfig({
   },
   plugins: [react(), tsconfigPaths()],
   base: "/Typed/",
+  build: { outDir: path.join(__dirname, "docs"),},
   server: {
     port: 3000,
     open: true

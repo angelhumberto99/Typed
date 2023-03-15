@@ -10,7 +10,9 @@ const ThemeSelector = () => {
   const handleClick = () => {
     if (setTheme === null) return
     focus?.current?.focus()
-    setTheme(theme === "light" ? 'dark': 'light')
+    const THEME = theme === "light" ? 'dark': 'light'
+    localStorage.setItem(import.meta.env.VITE_THEME, THEME)
+    setTheme(THEME)
   }
   
   return (
