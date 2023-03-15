@@ -12,7 +12,7 @@ function App() {
   return (
     <div theme-attr={theme} className="App">
       <SettingsContext.Provider value={{audio, setAudio, langIndex, setLangIndex, theme, setTheme}}>
-        <BrowserRouter>
+        <BrowserRouter basename='/Typed/'>
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="rating" element={<Rating/>}/>

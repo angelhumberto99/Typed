@@ -9,6 +9,7 @@ export default defineConfig({
     alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
   },
   plugins: [react(), tsconfigPaths()],
+  base: "/Typed/",
   server: {
     port: 3000,
     open: true
