@@ -1,7 +1,6 @@
 .board {
   width: 90%;
   height: 1rem;
-  min-width: 650px;
   max-width: 1200px;
   padding: 1rem 1.5rem;
   margin: 1rem 0;
@@ -20,4 +19,13 @@
   font-size: 1rem;
   color: var(--font-color);
   text-align: center;
+}
+
+@media (max-height: 655px) or (max-width: 768px) {
+  .board {
+    margin-bottom: .5rem;
+    p {
+      font-size: .8rem;
+    }
+  }
 }

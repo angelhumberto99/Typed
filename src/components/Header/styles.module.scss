@@ -10,7 +10,6 @@
 
 .content {
   width: 90%;
-  min-width: 650px;
   max-width: 1000px;
   display: flex;
   justify-content: space-between;
@@ -50,4 +49,16 @@
   border-left: 1px solid var(--shadow);
   justify-content: space-around;
   align-items: center;
+}
+
+@media (max-height: 655px) or (max-width: 768px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+  .settings {
+    gap: 1rem;
+  }
+  .content {
+    height: 2rem;
+  }
 }

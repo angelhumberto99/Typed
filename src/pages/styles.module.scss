@@ -5,3 +5,27 @@
   flex-direction: column;
   align-items: center;
 }
+
+.container:focus {
+  outline: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-height: 800px) and (max-width: 730px) {
+  .content {
+    justify-content: center;
+  }
+}
+
+@media (max-height: 500px) {
+  .container {
+    overflow-y: auto;
+  }
+}

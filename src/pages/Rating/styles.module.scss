@@ -20,3 +20,13 @@
   justify-content: center;
 }
 
+@media (max-width: 768px) {
+  .info {
+    transform: scale(.6);
+    margin: 0;
+  }
+
+  .main-content {
+    margin-top: 0;
+  }
+}

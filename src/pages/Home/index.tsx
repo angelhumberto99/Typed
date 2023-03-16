@@ -19,10 +19,12 @@ const Home = () => {
         <TimerContext.Provider value={{time, interv, startTimer, stopTimer, resetTimer, ended}}>
           <KeyboardContext.Provider value={{word, letter, endOfWord, index}}>
             <WordContext.Provider value={{currentWord, quotes}}>
-              <QuoteList start={interv}/>
-              <Analytics/>
-              <Restart nav={false}/>
-              <Keyboard current={currentKey} lang={langIndex}/>
+              <div className={styles.content}>
+                <QuoteList start={interv}/>
+                <Analytics/>
+                <Restart nav={false}/>
+                <Keyboard current={currentKey} lang={langIndex}/>
+              </div>
             </WordContext.Provider>
           </KeyboardContext.Provider>
         </TimerContext.Provider>

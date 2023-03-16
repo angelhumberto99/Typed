@@ -16,3 +16,9 @@
   outline: none;
   background-color: var(--shadow);
 }
+
+@media (max-width: 730px) {
+  .select {
+    display: none;
+  }
+}

@@ -1,6 +1,5 @@
 .frame {
-  width: 90%;
-  min-width: 650px;
+  width: 80%;
   max-width: 1000px;
   border: 2rem solid var(--frame-color);
   border-radius: 15px;
@@ -24,14 +23,18 @@
 .row {
   display: flex;
   flex: 1;
+  height: 100%;
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 88px;
   gap: 5px;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-height: 800px) or (max-width: 730px) {
   .frame {
-    transform: scale(.8);
+    display: none;
   }
 }
