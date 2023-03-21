@@ -1,7 +1,7 @@
 # Typing
 This project is a complete remake of my very first web application, which was created to help people to use their ten fingers in order to write words more precise and faster using a computer keyboard.
 
-You can test how fast and precise you are, by visiting: https://angelhumberto99.github.io/Typed/rating
+You can test how fast and precise you are, by visiting: https://angelhumberto99.github.io/Typed/
 
 ## Dark theme main page
 ![main-dark-theme](https://user-images.githubusercontent.com/50953275/226748403-099f95d7-3050-4d04-8dc7-9bf8cae9a539.png)
