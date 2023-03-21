@@ -18,6 +18,13 @@
   list-style: none;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+.info > * {
+  display: flex;
+  flex: 1 1 10%;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {

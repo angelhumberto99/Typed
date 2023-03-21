@@ -17,7 +17,7 @@
   background-color: var(--shadow);
 }
 
-@media (max-width: 730px) {
+@media (max-width: 530px) or (max-height: 670px)  {
   .select {
     display: none;
   }

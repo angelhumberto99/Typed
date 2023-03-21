@@ -10,12 +10,19 @@ interface IProps {
   ended: boolean
 }
 
+interface IPlot {
+  x: number
+  y: number
+}
+
 const useWordAnalytics = ({currentWord, word, endOfWord, interv, time, ended}: IProps) => {
   const [ wrong, setWrong ] = useState(0)
   const [ correct, setCorrect ] = useState(0)
   const [ wpm, setWpm ] = useState(0)
   const navigate = useNavigate()
   const location = useLocation()
+  const [ wrongData, setWrongData ] = useState<Array<IPlot>>([])
+  const [ correctData, setCorrectData ] = useState<Array<IPlot>>([])
 
   const handlePrecision = () => {
     if (!endOfWord) return
@@ -29,6 +36,8 @@ const useWordAnalytics = ({currentWord, word, endOfWord, interv, time, ended}: I
     setWrong(0)
     setCorrect(0)
     setWpm(0)
+    setWrongData([])
+    setCorrectData([])
   }
 
   useEffect(() => {
@@ -39,15 +48,24 @@ const useWordAnalytics = ({currentWord, word, endOfWord, interv, time, ended}: I
   }, [endOfWord, interv])
 
   useEffect(() => {
+    setWrongData((prev) => [...prev, {x: time, y: wpm}])
+  }, [wrong])
+
+  useEffect(() => {
+    setCorrectData((prev) => [...prev, {x: time, y: wpm}])
+  }, [correct])
+
+  useEffect(() => {
     let calc:number = 0
     if (time !== 0)
       calc = Math.trunc((60/time)*(correct-wrong))
-    setWpm(calc)
+    setWpm(calc < 0 ? 0 : calc)
   }, [wrong, correct, time])
 
   useEffect(() => {
-    if (ended && location.pathname === "/")
-      navigate("rating", { state: {wpm, correct, wrong}})
+    if (ended && location.pathname === "/") {
+      navigate("rating", { state: {wpm, correct, wrong, wrongData, correctData}})
+    }
   }, [ended])
 
   return { wrong, correct, wpm }

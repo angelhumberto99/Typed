@@ -3,10 +3,10 @@ import styles from './styles.module.scss'
 interface IProps {
   percent: number
   children: string
-  animation: boolean
+  label: boolean
 }
 
-const Percentage = ({percent, children, animation}: IProps) => {
+const Percentage = ({percent, children, label}: IProps) => {
   const dashLenght = 283
   const offset = dashLenght - (dashLenght * percent) / 100
   const percentage = {"--progress": offset } as React.CSSProperties
@@ -14,7 +14,7 @@ const Percentage = ({percent, children, animation}: IProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.info}>
-        { animation ? `${percent.toFixed(2)} %`
+        { label ? `${percent.toFixed(2)} %`
           : `${percent} ${children}`
         }
       </div>
@@ -24,7 +24,7 @@ const Percentage = ({percent, children, animation}: IProps) => {
         </svg>
         <span>
           { Math.trunc(percent) }
-          { animation && <small>%</small> }
+          { label && <small>%</small> }
         </span>
       </div>
       <span>

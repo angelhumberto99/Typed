@@ -1,26 +1,33 @@
 import { useState, useEffect } from 'react'
 import { getPlotterOptions } from '../utils'
 
+interface IPlot {
+  x: number
+  y: number
+}
+
 interface IProps {
   theme: string
   timeBoundary: number
+  wrongData: Array<IPlot>
+  correctData: Array<IPlot>
 }
 
-const usePlotter = ({theme, timeBoundary}: IProps) => {
+const usePlotter = ({theme, timeBoundary, wrongData, correctData}: IProps) => {
   const [ options, setOptions ] = useState<Object>({})
-  // provitional data
+
   const data = {
-    labels: [...(Array(timeBoundary+1).keys())].filter(el => el%2 === 0),
+    labels: [...(Array(timeBoundary+1).keys())],
     datasets: [{
       label: "Correct",
-      data: [{x:15, y: 15},{x:5, y: 2}],
+      data: correctData,
       backgroundColor: "rgb(110, 182, 221)",
       borderColor: "rgb(49, 183, 255)",
       borderWidth: 1
     },
     {
       label: "Wrong",
-      data: [{x:2, y: 20},{x:4, y: 10}],
+      data: wrongData,
       backgroundColor: "rgb(245, 99, 99)",
       borderColor: "red",
       borderWidth: 1

@@ -4,6 +4,7 @@
   height: 100%;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 }
 
 .container:focus {
@@ -18,14 +19,9 @@
   height: 100%;
 }
 
-@media (max-height: 800px) and (max-width: 730px) {
+@media (max-height: 730px) or (max-width: 730px) {
   .content {
     justify-content: center;
-  }
-}
-
-@media (max-height: 500px) {
-  .container {
-    overflow-y: auto;
+    align-items: center;
   }
 }
